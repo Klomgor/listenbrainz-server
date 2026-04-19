@@ -61,6 +61,13 @@ const Preview = React.forwardRef(function PreviewComponent(
       viewBox={`0 0 ${size} ${size}`}
       height={size}
       width={size}
+      style={
+        {
+          "--lb-text-color": textColor || undefined,
+          "--lb-bg-color-1": bgColor1 || undefined,
+          "--lb-bg-color-2": bgColor2 || undefined,
+        } as React.CSSProperties
+      }
       {...svgProps}
     >
       <style>
@@ -71,23 +78,24 @@ const Preview = React.forwardRef(function PreviewComponent(
           ? `
           text > tspan,
           .accent-color {
-          fill: ${textColor} !important;
+          fill: var(--lb-text-color) !important;
         }
         .accent-color-stroke {
-          stroke: ${textColor} !important;
+          stroke: var(--lb-text-color) !important;
         }
           `
           : ""}
         {bgColor1
           ? `
-          stop:first-child { stop-color: ${bgColor1} !important; }
-          .bg-color-1 { fill: ${bgColor1} !important; }
+          stop:first-child { stop-color: var(--lb-bg-color-1) !important; }
+          .bg-color-1 { fill: var(--lb-bg-color-1) !important; }
         `
           : ""}
         {bgColor2
           ? `
-          stop:nth-child(2) { stop-color: ${bgColor2} !important; }
-          .bg-color-2 { fill: ${bgColor2} !important; }`
+          stop:nth-child(2) { stop-color: var(--lb-bg-color-2) !important; }
+          .bg-color-2 { fill: var(--lb-bg-color-2) !important; }
+          `
           : ""}
       </style>
       <svg
