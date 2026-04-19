@@ -29,8 +29,7 @@ describe("resolveCustomProperties", () => {
   it("returns original string when no --lb-* properties exist", () => {
     const input = `<svg style="fill: red"><text>hello</text></svg>`;
     const result = resolveCustomProperties(input);
-    expect(result).not.toContain("var(--lb-");
-    expect(result).not.toContain("!important");
+    expect(result).toBe(input);
   });
 
   it("handles multiple occurrences of the same variable", () => {

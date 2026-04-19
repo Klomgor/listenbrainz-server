@@ -8,11 +8,13 @@ import { Canvg, RenderingContext2D, presets } from "canvg";
 
 export function resolveCustomProperties(svgString: string): string {
   // Extract custom properties from the root svg's style attribute
-  const styleMatch = svgString.match(/style="([^"]*)"/);
+  const svgTagMatch = svgString.match(/<svg\b[^>]*>/i);
+  if (!svgTagMatch) return svgString;
+  const styleMatch = svgTagMatch[0].match(/\bstyle=(["'])(.*?)\1/i);
   if (!styleMatch) return svgString;
 
   const propertyMap = new Map<string, string>();
-  styleMatch[1]
+  styleMatch[2]
     .split(";")
     .filter((decl) => decl.includes(":"))
     .forEach((decl) => {
