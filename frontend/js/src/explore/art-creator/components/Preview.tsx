@@ -61,16 +61,15 @@ const Preview = React.forwardRef(function PreviewComponent(
       viewBox={`0 0 ${size} ${size}`}
       height={size}
       width={size}
-      style={
-        {
-          "--lb-text-color": textColor || undefined,
-          "--lb-bg-color-1": bgColor1 || undefined,
-          "--lb-bg-color-2": bgColor2 || undefined,
-        } as React.CSSProperties
-      }
       {...svgProps}
     >
       <style>
+        {`
+          a, a:visited, a:link, a:hover {
+            fill: inherit !important;
+            stroke: inherit !important;
+          }
+        `}
         {!showCaption
           ? ` .caption { display: none; } `
           : `.caption text > tspan { fill: white; }`}
@@ -78,24 +77,23 @@ const Preview = React.forwardRef(function PreviewComponent(
           ? `
           text > tspan,
           .accent-color {
-          fill: var(--lb-text-color) !important;
+          fill: ${textColor} !important;
         }
         .accent-color-stroke {
-          stroke: var(--lb-text-color) !important;
+          stroke: ${textColor} !important;
         }
           `
           : ""}
         {bgColor1
           ? `
-          stop:first-child { stop-color: var(--lb-bg-color-1) !important; }
-          .bg-color-1 { fill: var(--lb-bg-color-1) !important; }
+          stop:first-child { stop-color: ${bgColor1} !important; }
+          .bg-color-1 { fill: ${bgColor1} !important; }
         `
           : ""}
         {bgColor2
           ? `
-          stop:nth-child(2) { stop-color: var(--lb-bg-color-2) !important; }
-          .bg-color-2 { fill: var(--lb-bg-color-2) !important; }
-          `
+          stop:nth-child(2) { stop-color: ${bgColor2} !important; }
+          .bg-color-2 { fill: ${bgColor2} !important; }`
           : ""}
       </style>
       <svg
