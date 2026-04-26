@@ -108,7 +108,7 @@ module.exports = function (env, argv) {
     },
     optimization: {
       minimize: isProd,
-      minimizer: [new CssMinimizerPlugin()],
+      minimizer: [new CssMinimizerPlugin(), "..."],
     },
     resolve: {
       modules: [
