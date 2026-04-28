@@ -108,6 +108,8 @@ module.exports = function (env, argv) {
     },
     optimization: {
       minimize: isProd,
+      // "..." is a shortcut to access the default Webpack minimizer config.
+      // see https://webpack.js.org/configuration/optimization/#optimizationminimizer
       minimizer: [new CssMinimizerPlugin(), "..."],
     },
     resolve: {
