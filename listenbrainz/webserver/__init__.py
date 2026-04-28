@@ -198,8 +198,8 @@ def create_app(debug=None):
             # cache image assets for 1 week
             image_assets_max_age = 604800
             response.cache_control.public = True
-            response.cache_control.immutable = True
             if request.path.startswith('/static/dist'):
+                response.cache_control.immutable = True
                 response.cache_control.max_age = hashed_assets_max_age
             elif request.path.startswith('/static/img'):
                 response.cache_control.max_age = image_assets_max_age
