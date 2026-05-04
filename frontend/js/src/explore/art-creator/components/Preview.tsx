@@ -66,8 +66,8 @@ const Preview = React.forwardRef(function PreviewComponent(
       <style>
         {`
           a, a:visited, a:link, a:hover {
-            fill: inherit !important;
-            stroke: inherit !important;
+            fill: inherit;
+            stroke: inherit;
           }
         `}
         {!showCaption
@@ -77,22 +77,22 @@ const Preview = React.forwardRef(function PreviewComponent(
           ? `
           text > tspan,
           .accent-color {
-          fill: ${textColor} !important;
+          fill: ${textColor};
         }
         .accent-color-stroke {
-          stroke: ${textColor} !important;
+          stroke: ${textColor};
         }
           `
           : ""}
         {bgColor1
           ? `
-          stop:first-child { stop-color: ${bgColor1} !important; }
+          stop:first-child { stop-color: ${bgColor1}; }
           .bg-color-1 { fill: ${bgColor1} !important; }
         `
           : ""}
         {bgColor2
           ? `
-          stop:nth-child(2) { stop-color: ${bgColor2} !important; }
+          stop:nth-child(2) { stop-color: ${bgColor2}; }
           .bg-color-2 { fill: ${bgColor2} !important; }`
           : ""}
       </style>
