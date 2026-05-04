@@ -377,6 +377,12 @@ export default function AddData() {
           </em>
           , a scrobbling application for Android Devices
         </li>
+        <li>
+          <em>
+            <a href="https://boomingmusic.vercel.app/">Booming Music</a>
+          </em>
+          , a clean and fast, and Material You music player for Android
+        </li>
       </ul>
 
       <h4>Scripts</h4>
